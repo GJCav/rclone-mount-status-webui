@@ -85,3 +85,9 @@ Relevant discussions include:
 * [Show synchronization status in Windows Explorer · Issue #4878](https://github.com/rclone/rclone/issues/4878)
 
 Since no direct answers were found, I created this WebUI. If you discover a better solution, please let me know. 
+
+
+
+## License
+
+MIT
