@@ -3,7 +3,7 @@ import {InfoList, TransferCard, TransferList} from "./ui.js";
 import RcloneAPI from "./rclone_api.js";
 import * as Readable from "./readable.js";
 
-const target = "localhost:5572";
+const target = "127.0.0.1:5572";
 
 const api = new RcloneAPI({
     alt_hostport: target
