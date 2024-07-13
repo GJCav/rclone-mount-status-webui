@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <style>
+    #app {
+      max-width: 50rem; 
+      margin-left: auto; 
+      margin-right: auto;
+      padding: 1rem 1rem 0 1rem;
+    }
+
+    h1 {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 + h2 {
+      margin-top: 0;
+    }
+
+    .card {
+      max-width: 40rem;
+    }
+
+    .card_container {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 3rem;
+    }
+
+    .info_pannel {
+      display: grid; 
+      grid-template-columns: 10rem 1fr;
+      grid-column-gap: 1rem;
+      grid-row-gap: 0.8rem;
+    }
+
+    .transfer_container {
+      width: 100%;
+    }
+
+    .transfer_container + .transfer_container {
+      margin-top: 1.5rem;
+    }
+
+    .transfer_container > h5 {
+      font-family: monospace;
+      font-weight: 50;
+      margin: 0 0.5rem 0 0rem;
+      font-size: 1rem;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+
+    .tag_list {
+      display: flex;
+      flex-wrap: wrap;
+      list-style-type: none;
+      padding: 0 0 0 0;
+      margin: 0.5rem 0;
+    }
+
+    .tag_list li {
+      padding: 0 1rem;
+    }
+
+
+  </style>
+<head/>
+<body style="font-family: sans-serif;"></body>
+  <div id="app">
+
+    <h1>Rclone Mount Status</h1>
+
+    <div class="card_container">
+      <div class="card">
+        <h2>General</h2>
+        <div id="general" class="info_pannel">
+          <div>Target</div> <div>localhost</div>
+          <div>Connection</div> <div>connected</div>
+          <div>Last Update</div><div>2020-01-01 12:34:56</div>
+          <div>Running Time</div> <div>1d 2h 3m 4s</div>
+          <div>Total Bytes</div> <div>25.5G</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>VFS</h2>
+        <div id="vfs" class="info_pannel">
+          <div>Busy</div> <div>Yes</div>
+  
+          <div>Uploads In Progress</div><div>3</div>
+          <div>Uploads In Queue</div><div>2</div>
+  
+          <div>Disk Used</div><div>35.2G</div>
+          <div>Disk Out of Space</div><div>No</div>
+        </div>
+      </div>
+    </div>
+    
+    <h2 id="transferring_title">Transferring</h2>
+    <div id="transfer">
+      <div class="transfer_container" id="t1">
+        <h5>Uploading sadlfkdkUploading sadlfkdkUploading sadlfkdkUploading sadlfkdkUploading sadlfkdk</h5>
+        <ul class="tag_list">
+          <li>12MB/5GB (56%)</li>
+          <li>Speed: 2M/s</li>
+          <li>ETA: 2 mins</li>
+        </ul>
+      </div>
+      <div class="transfer_container">
+        <h5>Uploading sadlfkdkUploading sadlfkdk</h5>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
