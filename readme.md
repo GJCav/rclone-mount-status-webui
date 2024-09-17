@@ -51,27 +51,6 @@ This WebUI displays essential information about the `rclone mount` status.
     ```
 
 
-
-**FAQ**
-
-* Can I change `127.0.0.1:5572`?
-
-    * Yes. If you change it into `<hostport>`,
-
-    * also remember to edit this line in `js/main.js`.
-
-        ```js
-        // Before
-        const target = "127.0.0.1:5572";
-        
-        // After editing
-        const target = "<hostport>";
-        ```
-
-    * Otherwise, you will get CORS error in browsers.
-
-
-
 ## Why write this UI?
 
 As a heavy `rclone mount` user, I found the terminal output insufficient. I needed to know which files were successfully uploaded and when it was safe to exit the program. Despite extensive searching, I couldn't find a satisfactory solution.
