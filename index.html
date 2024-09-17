@@ -2,122 +2,62 @@
 <html>
 <head>
   <title>Home</title>
-  <style>
-    #app {
-      max-width: 50rem; 
-      margin-left: auto; 
-      margin-right: auto;
-      padding: 1rem 1rem 0 1rem;
-    }
-
-    h1 {
-      margin-bottom: 0;
-    }
-
-    h2 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    h1 + h2 {
-      margin-top: 0;
-    }
-
-    .card {
-      max-width: 40rem;
-    }
-
-    .card_container {
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: 3rem;
-    }
-
-    .info_pannel {
-      display: grid; 
-      grid-template-columns: 10rem 1fr;
-      grid-column-gap: 1rem;
-      grid-row-gap: 0.8rem;
-    }
-
-    .transfer_container {
-      width: 100%;
-    }
-
-    .transfer_container + .transfer_container {
-      margin-top: 1.5rem;
-    }
-
-    .transfer_container > h5 {
-      font-family: monospace;
-      font-weight: 50;
-      margin: 0 0.5rem 0 0rem;
-      font-size: 1rem;
-      text-decoration: underline;
-      word-break: break-all;
-    }
-
-    .tag_list {
-      display: flex;
-      flex-wrap: wrap;
-      list-style-type: none;
-      padding: 0 0 0 0;
-      margin: 0.5rem 0;
-    }
-
-    .tag_list li {
-      padding: 0 1rem;
-    }
-
-
-  </style>
+  <link rel="stylesheet" href="style.css">
 <head/>
-<body style="font-family: sans-serif;"></body>
+<body>
   <div id="app">
-
     <h1>Rclone Mount Status</h1>
-
-    <div class="card_container">
+    <div class="cards">
       <div class="card">
         <h2>General</h2>
-        <div id="general" class="info_pannel">
-          <div>Target</div> <div>localhost</div>
-          <div>Connection</div> <div>connected</div>
-          <div>Last Update</div><div>2020-01-01 12:34:56</div>
-          <div>Running Time</div> <div>1d 2h 3m 4s</div>
-          <div>Total Bytes</div> <div>25.5G</div>
+        <div class="pannel">
+          <div>Server</div> 
+          <div v-if="config.server_loc === ''">current host</div>
+          <div v-if="config.server_loc !== ''">{{config.server_loc}}</div>
+
+          <div>State</div>  <div>{{general.state}}</div>
+          <div>Last Update</div> <div>{{general.last_update}}</div>
+          <div>Running Time</div> <div>{{general.running_time}}</div>
+          <div>Total Bytes</div> <div>{{general.tot_bytes}}</div>
         </div>
       </div>
-
       <div class="card">
         <h2>VFS</h2>
-        <div id="vfs" class="info_pannel">
-          <div>Busy</div> <div>Yes</div>
-  
-          <div>Uploads In Progress</div><div>3</div>
-          <div>Uploads In Queue</div><div>2</div>
-  
-          <div>Disk Used</div><div>35.2G</div>
-          <div>Disk Out of Space</div><div>No</div>
+        <div class="pannel">
+          <div>Busy</div> 
+          <div v-if="vfs.busy == BUSY_NO" style="color:blue">No. Safe to exit</div>
+          <div v-if="vfs.busy == BUSY_YES" style="color:red">Yes. DO NOT EXIT.</div>
+          <div v-if="vfs.busy == BUSY_UNKNOWN" style="color:blueviolet">Unknown</div>
+
+          <div>Uploads in Progress</div> <div>{{vfs.uploads_in_proc}}</div>
+          <div>Uploads in Queue</div> <div>{{vfs.uploads_in_queue}}</div>
+          <div>Disk Used</div> <div>{{vfs.disk_used}}</div>
+          <div>Disk out of Space</div> <div>{{vfs.disk_out_of_space}}</div>
         </div>
+      </div>
+    </div>
+
+    <!-- <button @click="update">update</button> -->
+
+    <h2>Transferring {{ transfers.length }} file(s)</h2>
+    <div class="transfers">
+      <div class="transfer" v-for="item in transfers">
+        <h5>{{item.path}}</h5>
+        <ul>
+          <li v-for="tag in item.tags">{{tag}}</li>
+        </ul>
       </div>
     </div>
     
-    <h2 id="transferring_title">Transferring</h2>
-    <div id="transfer">
-      <div class="transfer_container" id="t1">
-        <h5>Uploading sadlfkdkUploading sadlfkdkUploading sadlfkdkUploading sadlfkdkUploading sadlfkdk</h5>
-        <ul class="tag_list">
-          <li>12MB/5GB (56%)</li>
-          <li>Speed: 2M/s</li>
-          <li>ETA: 2 mins</li>
-        </ul>
-      </div>
-      <div class="transfer_container">
-        <h5>Uploading sadlfkdkUploading sadlfkdk</h5>
-      </div>
-    </div>
   </div>
-  <script type="module" src="js/main.js"></script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+      }
+    }
+  </script>
+  <script defer type="module" src="js/main.js"></script>
 </body>
 </html>

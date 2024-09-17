@@ -1,0 +1,71 @@
+body {
+    font-family: sans-serif;
+}
+
+#app {
+    padding: 1rem 1rem 0 1rem;
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5rem;
+}
+
+.cards .card {
+    max-width: 22rem;
+}
+
+.pannel {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 2rem;
+    grid-row-gap: 1rem;
+}
+
+.transfers {
+    display: flex;
+    flex-direction: column;
+}
+
+.transfer {
+    width: 100%;
+}
+
+.transfer + .transfer {
+    margin-top: 1rem;
+}
+
+.transfer > h5 {
+    font-family: monospace;
+    font-weight: 50;
+    margin: 0 0.5rem 0 0rem;
+    font-size: 1rem;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.transfer ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.transfer ul li {
+    padding: 0 1rem;
+}
